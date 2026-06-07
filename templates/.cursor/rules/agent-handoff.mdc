@@ -1,0 +1,14 @@
+---
+description: Shared handoff state for agent switching
+alwaysApply: true
+---
+
+Before working, read `.agents/state.md`.
+
+After meaningful work, update `.agents/state.md` and replace the single `Latest Handoff` entry. Keep the file concise.
+
+If `scripts/validate-agent-state.ps1` exists, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\validate-agent-state.ps1
+```

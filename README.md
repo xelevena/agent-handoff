@@ -6,12 +6,35 @@ Use it when you switch between tools such as Codex, Claude Code, Cursor, or othe
 
 The main use case is quota or time-window handoff. For example, when one agent reaches a 5-hour usage window or rate limit, you can switch to another tool and keep working without rebuilding context from the entire chat history.
 
+`agent-handoff` is a repo-level protocol first. Plugins and commands are only adapters. The durable mechanism is the set of files inside your repository, because different agents already know how to read different startup files.
+
 ## What It Provides
 
 - `AGENTS.md`: startup note for Codex and other agents.
 - `CLAUDE.md`: startup note for Claude Code.
 - `.agents/state.md`: the single shared handoff state.
 - `scripts/validate-agent-state.ps1`: validator that keeps the state file short and latest-only.
+
+Optional adapter templates:
+
+- `.claude/commands/handoff.md`: Claude Code command-style reminder.
+- `.cursor/rules/agent-handoff.mdc`: Cursor rule.
+- `adapters/codex-plugin`: planned Codex plugin wrapper.
+
+See [docs/protocol.md](docs/protocol.md) for the protocol design.
+
+## How Agents Auto-Discover It
+
+The trick is not one universal plugin system. The trick is repo-local files that each agent already recognizes:
+
+```text
+Codex        -> AGENTS.md
+Claude Code  -> CLAUDE.md
+Cursor       -> .cursor/rules/agent-handoff.mdc
+All agents   -> .agents/state.md
+```
+
+Every adapter points back to `.agents/state.md`, so the shared state remains tool-neutral.
 
 ## Why Latest-Only?
 
@@ -65,6 +88,13 @@ scripts/validate-agent-state.ps1
 ```
 
 Then edit `.agents/state.md` for your project.
+
+For broader adapter coverage, also copy from `templates/`:
+
+```text
+.claude/commands/handoff.md
+.cursor/rules/agent-handoff.mdc
+```
 
 ## Agent Workflow
 
