@@ -1,6 +1,6 @@
 {
   "name": "agent-handoff",
-  "version": "0.1.0",
+  "version": "0.1.0+codex.20260607173933",
   "description": "Install a compact repo-local handoff ledger for switching between Codex, Claude Code, Cursor, and other coding agents.",
   "author": {
     "name": "xelevena",
@@ -9,7 +9,13 @@
   "homepage": "https://github.com/xelevena/agent-handoff",
   "repository": "https://github.com/xelevena/agent-handoff",
   "license": "MIT",
-  "keywords": ["agents", "handoff", "codex", "claude", "cursor"],
+  "keywords": [
+    "agents",
+    "handoff",
+    "codex",
+    "claude",
+    "cursor"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Agent Handoff",
@@ -17,7 +23,10 @@
     "longDescription": "Install a lightweight handoff convention with AGENTS.md, CLAUDE.md, .agents/state.md, optional Claude/Cursor adapters, and a validator so agents can continue work after quota or tool switches.",
     "developerName": "xelevena",
     "category": "Productivity",
-    "capabilities": ["Write", "Workflow"],
+    "capabilities": [
+      "Write",
+      "Workflow"
+    ],
     "websiteURL": "https://github.com/xelevena/agent-handoff",
     "defaultPrompt": [
       "Enable agent handoff in this repo.",
