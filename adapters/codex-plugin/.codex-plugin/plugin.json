@@ -1,6 +1,6 @@
 {
   "name": "agent-handoff",
-  "version": "0.1.0+codex.20260607173933",
+  "version": "0.1.0+codex.20260607175632",
   "description": "Install a compact repo-local handoff ledger for switching between Codex, Claude Code, Cursor, and other coding agents.",
   "author": {
     "name": "xelevena",

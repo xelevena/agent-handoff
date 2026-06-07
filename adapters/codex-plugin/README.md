@@ -5,6 +5,7 @@ This is a Codex plugin wrapper for `agent-handoff`.
 It includes:
 
 - `.codex-plugin/plugin.json`
+- `commands/handoff.md` for the plugin-level `/handoff` command
 - `skills/agent-handoff/SKILL.md`
 - `templates/` for Codex, Claude Code, Cursor, and shared state
 - `scripts/install-agent-handoff.ps1`
@@ -16,6 +17,12 @@ After installing the plugin in Codex, ask:
 
 ```text
 Enable agent handoff in this repo.
+```
+
+Or invoke the plugin command:
+
+```text
+/handoff
 ```
 
 Codex should install the repo-local files:
