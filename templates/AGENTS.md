@@ -9,3 +9,5 @@ After meaningful work:
 3. Run `powershell -ExecutionPolicy Bypass -File scripts\validate-agent-state.ps1` when available.
 
 Keep `.agents/state.md` concise. It is the durable handoff context shared between coding agents.
+
+If the user sends `/handoff`, immediately update `.agents/state.md` for the next agent, run the validator if available, and report that handoff is ready.

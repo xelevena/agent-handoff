@@ -7,6 +7,14 @@ description: Install, update, validate, or explain a compact repo-local handoff 
 
 Use this skill when the user asks to enable, install, update, validate, or explain shared agent handoff for a repository.
 
+Also use this skill when the user sends exactly:
+
+```text
+/handoff
+```
+
+In that case, immediately update `.agents/state.md` so another agent can continue from the current repository.
+
 ## Goal
 
 Install a repo-level convention that different coding agents can auto-discover:
@@ -44,6 +52,24 @@ powershell -ExecutionPolicy Bypass -File scripts\validate-agent-state.ps1
 ```
 
 6. Tell the user which files were installed or already existed.
+
+## `/handoff` Workflow
+
+When the user sends `/handoff`:
+
+1. Inspect current git status and recent work from available context.
+2. Update `.agents/state.md`.
+3. Promote anything that must survive future handoffs into `Current Status`, `Key Decisions`, or `Next Tasks`.
+4. Replace the single `Latest Handoff` entry with a concise summary.
+5. Run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\validate-agent-state.ps1
+```
+
+6. Reply with changed files, tests run, blockers, and next suggested task.
+
+Do not append a long session log.
 
 ## Update Workflow
 

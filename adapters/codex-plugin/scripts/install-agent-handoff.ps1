@@ -1,6 +1,7 @@
 param(
     [string]$TargetPath = ".",
     [switch]$Force,
+    [switch]$WithCodexCommand = $true,
     [switch]$WithClaudeCommand = $true,
     [switch]$WithCursorRule = $true
 )
@@ -30,6 +31,10 @@ Copy-Template (Join-Path $templateRoot "AGENTS.md") (Join-Path $targetRoot "AGEN
 Copy-Template (Join-Path $templateRoot "CLAUDE.md") (Join-Path $targetRoot "CLAUDE.md")
 Copy-Template (Join-Path $templateRoot ".agents/state.md") (Join-Path $targetRoot ".agents/state.md")
 Copy-Template (Join-Path $pluginRoot "scripts/validate-agent-state.ps1") (Join-Path $targetRoot "scripts/validate-agent-state.ps1")
+
+if ($WithCodexCommand) {
+    Copy-Template (Join-Path $templateRoot ".codex/commands/handoff.md") (Join-Path $targetRoot ".codex/commands/handoff.md")
+}
 
 if ($WithClaudeCommand) {
     Copy-Template (Join-Path $templateRoot ".claude/commands/handoff.md") (Join-Path $targetRoot ".claude/commands/handoff.md")

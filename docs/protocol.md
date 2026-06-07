@@ -50,6 +50,7 @@ scripts/validate-agent-state.ps1
 Optional adapters:
 
 ```text
+.codex/commands/handoff.md
 .claude/commands/handoff.md
 .cursor/rules/agent-handoff.mdc
 ```
@@ -90,3 +91,21 @@ Adapters should not invent separate memory formats. They should only:
 1. Make the host agent read `.agents/state.md`.
 2. Make the host agent update `.agents/state.md` before stopping.
 3. Run the validator when possible.
+
+## Slash Command Convention
+
+`/handoff` means:
+
+```text
+Update .agents/state.md now so another agent can continue immediately.
+```
+
+The command is intentionally a convention, not a host-specific feature. Adapters may implement it using native slash commands, command files, skills, or rules.
+
+Required behavior:
+
+1. Summarize recent work.
+2. Promote durable facts to stable sections.
+3. Replace the single `Latest Handoff` entry.
+4. Run the validator when available.
+5. Report that handoff is ready.

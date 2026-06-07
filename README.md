@@ -115,6 +115,26 @@ Run the validator.
 Commit when appropriate.
 ```
 
+## `/handoff`
+
+After installation, the intended quick path is:
+
+```text
+/handoff
+```
+
+When an agent sees `/handoff`, it should immediately update `.agents/state.md` for the current repository so another agent can continue right away.
+
+Expected behavior:
+
+1. Inspect the current worktree and recent work.
+2. Update durable sections if needed: `Current Status`, `Key Decisions`, and `Next Tasks`.
+3. Replace the single `Latest Handoff` entry with a concise summary.
+4. Run the validator.
+5. Tell the user the handoff is ready and mention any blockers.
+
+Implementation note: not every host has the same slash-command system. Claude Code can use `.claude/commands/handoff.md`. Codex can use the Agent Handoff plugin skill to treat a user message of `/handoff` as the same instruction. Other agents can implement the same convention through their own adapter files.
+
 Validator:
 
 ```powershell
