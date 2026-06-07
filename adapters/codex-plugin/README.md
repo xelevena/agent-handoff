@@ -32,6 +32,7 @@ AGENTS.md
 CLAUDE.md
 .agents/state.md
 .claude/commands/handoff.md
+.claude/skills/handoff/SKILL.md
 .cursor/rules/agent-handoff.mdc
 scripts/validate-agent-state.ps1
 ```

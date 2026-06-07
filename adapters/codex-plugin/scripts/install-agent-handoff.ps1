@@ -3,6 +3,7 @@ param(
     [switch]$Force,
     [switch]$WithCodexCommand = $true,
     [switch]$WithClaudeCommand = $true,
+    [switch]$WithClaudeSkill = $true,
     [switch]$WithCursorRule = $true
 )
 
@@ -38,6 +39,10 @@ if ($WithCodexCommand) {
 
 if ($WithClaudeCommand) {
     Copy-Template (Join-Path $templateRoot ".claude/commands/handoff.md") (Join-Path $targetRoot ".claude/commands/handoff.md")
+}
+
+if ($WithClaudeSkill) {
+    Copy-Template (Join-Path $templateRoot ".claude/skills/handoff/SKILL.md") (Join-Path $targetRoot ".claude/skills/handoff/SKILL.md")
 }
 
 if ($WithCursorRule) {

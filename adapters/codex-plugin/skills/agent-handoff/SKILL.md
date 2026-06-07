@@ -22,6 +22,7 @@ Install a repo-level convention that different coding agents can auto-discover:
 ```text
 Codex        -> AGENTS.md
 Claude Code  -> CLAUDE.md
+Claude Code  -> .claude/skills/handoff/SKILL.md
 Cursor       -> .cursor/rules/agent-handoff.mdc
 All agents   -> .agents/state.md
 ```
@@ -35,6 +36,7 @@ The plugin is only an installer and workflow helper. The durable protocol is the
    - `AGENTS.md`
    - `CLAUDE.md`
    - `.agents/state.md`
+   - `.claude/skills/handoff/SKILL.md`
    - `scripts/validate-agent-state.ps1`
 3. Run the bundled installer:
 

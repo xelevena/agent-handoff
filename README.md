@@ -18,6 +18,7 @@ The main use case is quota or time-window handoff. For example, when one agent r
 Optional adapter templates:
 
 - `.claude/commands/handoff.md`: Claude Code command-style reminder.
+- `.claude/skills/handoff/SKILL.md`: Claude Code skill-style `/handoff` command for current Claude Code versions.
 - `.cursor/rules/agent-handoff.mdc`: Cursor rule.
 - `adapters/codex-plugin`: planned Codex plugin wrapper.
 
@@ -93,7 +94,20 @@ For broader adapter coverage, also copy from `templates/`:
 
 ```text
 .claude/commands/handoff.md
+.claude/skills/handoff/SKILL.md
 .cursor/rules/agent-handoff.mdc
+```
+
+If Claude Code is currently running from another project, such as `general`, install the skill into that project rather than leaving it only inside this repository:
+
+```text
+<target-repo>/.claude/skills/handoff/SKILL.md
+```
+
+For a reusable source, copy from:
+
+```text
+skills/handoff/SKILL.md
 ```
 
 ## Agent Workflow
@@ -133,7 +147,7 @@ Expected behavior:
 4. Run the validator.
 5. Tell the user the handoff is ready and mention any blockers.
 
-Implementation note: not every host has the same slash-command system. Claude Code can use `.claude/commands/handoff.md`. Codex can use the Agent Handoff plugin skill to treat a user message of `/handoff` as the same instruction. Other agents can implement the same convention through their own adapter files.
+Implementation note: not every host has the same slash-command system. Current Claude Code can use `.claude/skills/handoff/SKILL.md`, while older command-style installs can use `.claude/commands/handoff.md`. Codex can use the Agent Handoff plugin skill to treat a user message of `/handoff` as the same instruction. Other agents can implement the same convention through their own adapter files.
 
 Validator:
 
