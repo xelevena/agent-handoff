@@ -1,3 +1,7 @@
+---
+description: Update the compact repo-local handoff state so another coding agent can continue.
+---
+
 # /handoff
 
 Update the repository handoff state now so another coding agent can continue without shared chat context.
